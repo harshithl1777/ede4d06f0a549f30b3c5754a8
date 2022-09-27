@@ -17,5 +17,6 @@ if should_push_today:
             est_now = utc_now.astimezone(est_timezone)
             formatted_est_now = est_now.strftime("%A, %B %d, %Y - %I:%M:%S %p")
             datetimes.write(f"\n{formatted_est_now}")
-            os.system(f"git add . && git commit -m {round(time.time())} && git push origin main")
+            os.system(f"git add . && git commit -m {round(time.time())}")
         datetimes.close()
+    os.system("git push origin main")
