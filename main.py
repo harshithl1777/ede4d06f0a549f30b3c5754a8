@@ -8,7 +8,7 @@ import time
 should_push_today = random.randrange(1, 13) > 3
 
 if should_push_today:
-    num_of_contributions = random.randrange(1, 9)
+    num_of_contributions = random.randrange(1, 11)
     for x in range(num_of_contributions):
         # Generate formatted date and time in EST
         with open("datetimes.txt", "a") as datetimes:
