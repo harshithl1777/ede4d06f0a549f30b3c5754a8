@@ -7,6 +7,13 @@ import time
 # Decide whether or not to push on this day (75% push rate)
 should_push_today = random.randrange(1, 13) > 3
 
+log_est_now = pytz.utc.localize(datetime.datetime.utcnow()).astimezone(pytz.timezone("America/Toronto"))
+log_formatted_est_now = log_est_now.strftime("%A, %B %d, %Y - %I:%M:%S %p")
+push_status = "[PUSH]" if should_push_today else "[NO PUSH]"
+with open("log.txt", "a") as log:
+    log.write(f"\n{push_status} {log_formatted_est_now}")
+log.close()
+
 if should_push_today:
     num_of_contributions = random.randrange(1, 11)
     for x in range(num_of_contributions):
