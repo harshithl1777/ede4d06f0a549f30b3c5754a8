@@ -1,7 +1,7 @@
 import random
 import datetime
 import pytz
-import subprocess
+import os
 import time
 
 # Decide whether or not to push on this day (75% push rate)
@@ -19,20 +19,4 @@ if should_push_today:
             formatted_est_now = est_now.strftime("%A, %B %d, %Y - %I:%M:%S %p")
             datetimes.write(f"\n{formatted_est_now}")
         datetimes.close()
-    subprocess.run(
-        [
-            "git",
-            "add",
-            ".",
-            "&&",
-            "git",
-            "commit",
-            "-m",
-            f"{round(time.time())}",
-            "&&",
-            "git",
-            "push",
-            "origin",
-            "master",
-        ]
-    )
+    os.system(f"git add . && git commit -m {round(time.time())} && git push origin main")
